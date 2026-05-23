@@ -1,774 +1,514 @@
 <!DOCTYPE html>
-
-<html class="light" lang="en">
-
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Dar ul Eman wa al-Taqwa</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;family=Noto+Sans:wght@300..700&amp;display=swap"
-        rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-        rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-        rel="stylesheet" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IndusStream SaaS — Next-Gen Business Automation for Pakistan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
         tailwind.config = {
-            darkMode: "class",
             theme: {
                 extend: {
                     colors: {
-                        "primary": "#0bda84",
-                        "secondary": "#d4af37", // Gold accent
-                        "background-light": "#f5f8f7",
-                        "background-dark": "#10221b",
-                        "glass-light": "rgba(255, 255, 255, 0.7)",
-                        "glass-dark": "rgba(16, 34, 27, 0.7)",
-                    },
-                    fontFamily: {
-                        "display": ["Manrope", "sans-serif"],
-                        "body": ["Noto Sans", "sans-serif"],
-                    },
-                    backgroundImage: {
-                        'marble-pattern': "url(\"data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zM32 63c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm57-13c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%239C92AC' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E\")",
-                    },
-                    boxShadow: {
-                        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.07)',
+                        pkGreen: '#006643',
+                        pkDark: '#0B192C',
+                        pkLight: '#F4F6F9',
+                        pkGold: '#D4AF37'
                     }
-                },
-            },
+                }
+            }
         }
     </script>
     <style>
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-        }
-
-        .dark .glass-panel {
-            background: rgba(16, 34, 27, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .glass-card-hover {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .glass-card-hover:hover {
-            background: rgba(255, 255, 255, 0.85);
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
-            border-color: #0bda84;
-        }
-
-        .dark .glass-card-hover:hover {
-            background: rgba(20, 45, 35, 0.85);
-        }
-
-        /* Timeline Glowing Node */
-        .timeline-node {
-            box-shadow: 0 0 0 0 rgba(11, 218, 132, 0.7);
-            animation: pulse-green 2s infinite;
-        }
-
-        @keyframes pulse-green {
-            0% {
-                transform: scale(0.95);
-                box-shadow: 0 0 0 0 rgba(11, 218, 132, 0.7);
-            }
-
-            70% {
-                transform: scale(1);
-                box-shadow: 0 0 0 10px rgba(11, 218, 132, 0);
-            }
-
-            100% {
-                transform: scale(0.95);
-                box-shadow: 0 0 0 0 rgba(11, 218, 132, 0);
-            }
-        }
-
-        /* Audio visualizer fake animation */
-        .bar {
-            animation: sound 0ms -800ms linear infinite alternate;
-        }
-
-        @keyframes sound {
-            0% {
-                opacity: .35;
-                height: 3px;
-            }
-
-            100% {
-                opacity: 1;
-                height: 16px;
-            }
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .gradient-text {
+            background: linear-gradient(135deg, #006643 0%, #10B981 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
     </style>
 </head>
+<body class="bg-pkLight text-pkDark overflow-x-hidden">
 
-<body
-    class="bg-background-light dark:bg-background-dark font-display text-[#0d1c16] dark:text-[#e7f4ee] bg-marble-pattern bg-fixed">
-    <!-- Header -->
-    <header class="fixed top-0 left-0 right-0 z-50 glass-panel border-b-0 px-6 py-4 transition-all duration-300">
-        <div class="max-w-7xl mx-auto flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <div class="size-8 text-primary">
-                    <span class="material-symbols-outlined text-3xl">mosque</span>
-                </div>
-                <h2 class="text-xl font-bold tracking-tight text-[#0d1c16] dark:text-white">Dar ul Eman</h2>
-            </div>
-            <nav class="hidden md:flex items-center gap-8">
-                <a class="text-sm font-medium hover:text-primary transition-colors" href="#about">About</a>
-                <a class="text-sm font-medium hover:text-primary transition-colors" href="#objectives">Objectives</a>
-                <a class="text-sm font-medium hover:text-primary transition-colors" href="#media">Media</a>
-                <a class="text-sm font-medium hover:text-primary transition-colors" href="#regions">Regions</a>
-                <a class="text-sm font-medium hover:text-primary transition-colors" href="#fatwa">Fatwa</a>
-                <a class="text-sm font-medium hover:text-primary transition-colors" href="#contact">Contact</a>
-            </nav>
-            <div class="flex items-center gap-3">
-                <!-- Tasbeeh Counter Widget -->
-                <button
-                    class="flex items-center justify-center h-9 px-3 rounded-full bg-primary/10 hover:bg-primary/20 text-primary transition-colors gap-2"
-                    title="Digital Tasbeeh">
-                    <span class="material-symbols-outlined text-[20px]">rotate_right</span>
-                    <span class="text-xs font-bold font-mono">33</span>
-                </button>
-                <!-- Lang Toggle -->
-                <button
-                    class="flex items-center justify-center size-9 rounded-full hover:bg-black/5 dark:hover:bg-white/5 transition-colors">
-                    <span class="text-xs font-bold">EN</span>
-                </button>
-                <!-- Mobile Menu Toggle Button -->
-                <button id="mobile-menu-btn" class="md:hidden flex items-center justify-center size-9 z-50">
-                    <span class="material-symbols-outlined" id="menu-icon">menu</span>
-                </button>
-            </div>
-        </div>
-        <!-- Mobile Menu -->
-        <nav id="mobile-menu" class="hidden md:hidden absolute top-full left-0 right-0 bg-white dark:bg-background-dark border-b border-gray-200 dark:border-white/10 shadow-lg">
-            <div class="max-w-7xl mx-auto px-6 py-4 space-y-3">
-                <a class="block py-2 px-4 text-sm font-medium hover:text-primary hover:bg-primary/5 rounded-lg transition-colors" href="#about">About</a>
-                <a class="block py-2 px-4 text-sm font-medium hover:text-primary hover:bg-primary/5 rounded-lg transition-colors" href="#objectives">Objectives</a>
-                <a class="block py-2 px-4 text-sm font-medium hover:text-primary hover:bg-primary/5 rounded-lg transition-colors" href="#media">Media</a>
-                <a class="block py-2 px-4 text-sm font-medium hover:text-primary hover:bg-primary/5 rounded-lg transition-colors" href="#regions">Regions</a>
-                <a class="block py-2 px-4 text-sm font-medium hover:text-primary hover:bg-primary/5 rounded-lg transition-colors" href="#fatwa">Fatwa</a>
-                <a class="block py-2 px-4 text-sm font-medium hover:text-primary hover:bg-primary/5 rounded-lg transition-colors" href="#contact">Contact</a>
-            </div>
-        </nav>
-    </header>
-    <!-- Hero Section -->
-    <section class="relative min-h-screen sm:min-h-[70vh] md:min-h-screen w-full flex items-center justify-center px-4 overflow-hidden pt-20 md:pt-0">
-        <!-- Background Image -->
-        <div class="absolute inset-0 z-0">
-            <div
-                class="absolute inset-0 bg-gradient-to-b from-white/30 via-transparent to-background-light dark:from-black/50 dark:to-background-dark z-10">
-            </div>
-            <img alt="Blurred interior of a peaceful mosque corridor with soft light filtering through arches"
-                class="w-full h-full object-cover opacity-80 dark:opacity-40 blur-[2px] scale-105"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJ3Ydl5_1bOGe444utnqU6jjblLFAe_uNM-rlTbigw23F0JloD_SEMil_upiFFpziqgRzfQEbfp1lp1wbeSGTmE_Frvf7vpd47_vVvEx47jJwZZkjxPmxBvI6FW31606Z3fWmy_cTFGZmpiKYPLQvNVM4g6Rl5NMWAk3U76-PXS8QnnNQiBMVE9jbZsNE9bnoFdQ1p28zau72WQgnnpQXmgZaleRyEUlX8UG4maH6kMu5GcNkVBB1IAYNVOheacfGO0IVAvSJy9nc" />
-        </div>
-        <div class="relative z-10 max-w-4xl w-full mx-auto">
-            <div
-                class="glass-panel p-6 md:p-12 rounded-3xl shadow-glass border-t border-white/60 text-center flex flex-col items-center gap-4 md:gap-6 animate-fade-in-up">
-                <div
-                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider mb-2">
-                    <span class="material-symbols-outlined text-sm">spa</span>
-                    <span>Spiritual Revival</span>
-                </div>
-                <h1 class="text-3xl sm:text-4xl md:text-6xl font-black leading-[1.1] tracking-tight text-[#0d1c16] dark:text-white">
-                    A Journey of Knowledge,<br />
-                    <span class="text-primary bg-clip-text">Revival</span> &amp; Heart-Purification
-                </h1>
-                <p class="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-2xl font-medium leading-relaxed">
-                    A mission under Hazrat Mufti Mukhtar-ud-Din Shah DB — continuing the legacy of Hazrat Zakariyya
-                    Kandhalwi RA.
-                </p>
-                <div class="flex flex-col sm:flex-row flex-wrap justify-center gap-3 mt-2 md:mt-4 w-full">
-                    <button
-                        class="group relative flex items-center justify-center h-10 md:h-12 px-6 md:px-8 rounded-full bg-primary hover:bg-emerald-500 text-white text-sm md:text-base font-bold transition-all shadow-lg shadow-primary/25 overflow-hidden">
-                        <span class="relative z-10">Enter the Journey</span>
-                        <div
-                            class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                        </div>
-                    </button>
-                    <button
-                        class="flex items-center justify-center h-10 md:h-12 px-6 md:px-8 rounded-full bg-white dark:bg-white/10 border border-gray-200 dark:border-white/10 hover:border-primary/50 text-[#0d1c16] dark:text-white text-sm md:text-base font-bold transition-all">
-                        Find Your Markaz
-                    </button>
-                    <button
-                        class="flex items-center justify-center h-10 md:h-12 px-6 md:px-8 rounded-full bg-transparent hover:bg-primary/5 text-[#0d1c16] dark:text-white text-sm md:text-base font-bold transition-all gap-2">
-                        <span class="material-symbols-outlined text-primary">edit_note</span>
-                        Ask a Scholar
-                    </button>
-                </div>
-            </div>
-        </div>
-        <!-- Scroll Indicator -->
-        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-50">
-            <span class="material-symbols-outlined text-3xl">keyboard_arrow_down</span>
-        </div>
-    </section>
-    <!-- Spiritual Lineage Timeline -->
-    <section class="py-12 md:py-24 px-4 relative max-w-4xl mx-auto">
-        <div class="text-center mb-8 md:mb-16">
-            <h2 class="text-2xl md:text-3xl font-bold mb-2 md:mb-4">The Golden Chain</h2>
-            <p class="text-sm md:text-base text-gray-500 dark:text-gray-400">Tracing the spiritual lineage of our mission</p>
-        </div>
-        <div class="relative">
-            <!-- Vertical Line -->
-            <div
-                class="absolute left-[20px] top-4 bottom-4 w-0.5 bg-gradient-to-b from-transparent via-secondary/50 to-transparent">
-            </div>
-            <div class="space-y-8 md:space-y-12">
-                <!-- Node 1 -->
-                <div class="relative flex gap-4 md:gap-8 group">
-                    <div class="relative z-10 flex-shrink-0">
-                        <div
-                            class="size-10 rounded-full bg-background-light dark:bg-background-dark border-2 border-secondary flex items-center justify-center timeline-node transition-transform group-hover:scale-110">
-                            <span class="material-symbols-outlined text-secondary text-sm">history_edu</span>
-                        </div>
-                    </div>
-                    <div
-                        class="flex-1 glass-card-hover p-4 md:p-6 rounded-xl border border-transparent group-hover:border-secondary/30 transition-all">
-                        <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-2 md:gap-0 mb-2">
-                            <h3 class="text-lg md:text-xl font-bold text-[#0d1c16] dark:text-white">Hazrat Zakariyya Kandhalwi RA
-                            </h3>
-                            <span class="text-xs font-mono text-secondary px-2 py-1 rounded bg-secondary/10 whitespace-nowrap ml-2 md:ml-0">1898 -
-                                1982</span>
-                        </div>
-                        <p class="text-gray-600 dark:text-gray-300 text-xs md:text-sm leading-relaxed">The revivalist of Sunnah and
-                            author of Faza'il-e-A'maal, whose spiritual effulgence continues to light the path.</p>
-                    </div>
-                </div>
-                <!-- Node 2 -->
-                <div class="relative flex gap-4 md:gap-8 group">
-                    <div class="relative z-10 flex-shrink-0">
-                        <div
-                            class="size-10 rounded-full bg-background-light dark:bg-background-dark border-2 border-primary flex items-center justify-center shadow-[0_0_15px_rgba(11,218,132,0.4)] transition-transform group-hover:scale-110">
-                            <span class="material-symbols-outlined text-primary text-sm">light_mode</span>
-                        </div>
-                    </div>
-                    <div
-                        class="flex-1 glass-card-hover p-4 md:p-6 rounded-xl border border-transparent group-hover:border-primary/30 transition-all">
-                        <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-2 md:gap-0 mb-2">
-                            <h3 class="text-lg md:text-xl font-bold text-[#0d1c16] dark:text-white">Hazrat Mufti Mukhtar-ud-Din
-                                Shah DB</h3>
-                            <span class="text-xs font-mono text-primary px-2 py-1 rounded bg-primary/10 whitespace-nowrap ml-2 md:ml-0">Present</span>
-                        </div>
-                        <p class="text-gray-600 dark:text-gray-300 text-xs md:text-sm leading-relaxed">The current spiritual mentor
-                            guiding thousands towards purification of the heart and adherence to Shariah.</p>
-                    </div>
-                </div>
-                <!-- Node 3 -->
-                <div class="relative flex gap-4 md:gap-8 group">
-                    <div class="relative z-10 flex-shrink-0">
-                        <div
-                            class="size-10 rounded-full bg-primary flex items-center justify-center shadow-lg transition-transform group-hover:scale-110">
-                            <span class="material-symbols-outlined text-white text-sm">diversity_3</span>
-                        </div>
-                    </div>
-                    <div
-                        class="flex-1 glass-card-hover p-4 md:p-6 rounded-xl border border-transparent group-hover:border-primary/30 transition-all">
-                        <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-2 md:gap-0 mb-2">
-                            <h3 class="text-lg md:text-xl font-bold text-[#0d1c16] dark:text-white">Dar ul Eman wa al-Taqwa</h3>
-                            <span
-                                class="text-xs font-mono text-gray-500 px-2 py-1 rounded bg-gray-100 dark:bg-white/5 whitespace-nowrap ml-2 md:ml-0">Movement</span>
-                        </div>
-                        <p class="text-gray-600 dark:text-gray-300 text-xs md:text-sm leading-relaxed">A global movement
-                            establishing Khanqahs and educational institutes to connect the Ummah with Allah SWT.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Objectives Section -->
-    <section class="py-12 md:py-20 bg-white/50 dark:bg-black/20">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 md:mb-12 gap-6">
-                <div>
-                    <h2 class="text-2xl md:text-4xl font-bold mb-2 md:mb-3">Our Core Objectives</h2>
-                    <p class="text-sm md:text-base text-gray-500">The pillars upon which this revival effort stands.</p>
-                </div>
-                <button class="text-primary text-sm md:text-base font-bold hover:underline flex items-center gap-1 whitespace-nowrap">
-                    Read detailed manifesto <span class="material-symbols-outlined text-sm">arrow_forward</span>
-                </button>
-            </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 md:gap-4">
-                <!-- Objective 1 -->
-                <div
-                    class="glass-panel p-4 md:p-6 rounded-2xl flex flex-col gap-4 glass-card-hover group cursor-pointer relative overflow-hidden">
-                    <div
-                        class="absolute -right-4 -top-4 text-gray-100 dark:text-white/5 opacity-50 group-hover:scale-110 transition-transform">
-                        <span class="material-symbols-outlined text-6xl md:text-9xl">favorite</span>
-                    </div>
-                    <div
-                        class="size-10 md:size-12 rounded-xl bg-red-50 dark:bg-red-900/20 text-red-500 flex items-center justify-center z-10">
-                        <span class="material-symbols-outlined text-sm md:text-base">favorite</span>
-                    </div>
-                    <h3 class="text-base md:text-lg font-bold leading-tight z-10">Purification of Hearts</h3>
-                    <p
-                        class="text-xs text-gray-500 dark:text-gray-400 z-10 opacity-0 group-hover:opacity-100 transition-opacity absolute bottom-6 left-6 right-6 translate-y-4 group-hover:translate-y-0">
-                        "Success is for him who purifies it." (Quran 91:9)
-                    </p>
-                    <div class="h-6"></div> <!-- Spacer for hover reveal -->
-                </div>
-                <!-- Objective 2 -->
-                <div
-                    class="glass-panel p-6 rounded-2xl flex flex-col gap-4 glass-card-hover group cursor-pointer relative overflow-hidden">
-                    <div
-                        class="absolute -right-4 -top-4 text-gray-100 dark:text-white/5 opacity-50 group-hover:scale-110 transition-transform">
-                        <span class="material-symbols-outlined text-9xl">menu_book</span>
-                    </div>
-                    <div
-                        class="size-12 rounded-xl bg-blue-50 dark:bg-blue-900/20 text-blue-500 flex items-center justify-center z-10">
-                        <span class="material-symbols-outlined">menu_book</span>
-                    </div>
-                    <h3 class="text-lg font-bold leading-tight z-10">Knowledge &amp; Education</h3>
-                    <p
-                        class="text-xs text-gray-500 dark:text-gray-400 z-10 opacity-0 group-hover:opacity-100 transition-opacity absolute bottom-6 left-6 right-6 translate-y-4 group-hover:translate-y-0">
-                        Spreading authentic Ilm across the globe.
-                    </p>
-                    <div class="h-6"></div>
-                </div>
-                <!-- Objective 3 -->
-                <div
-                    class="glass-panel p-6 rounded-2xl flex flex-col gap-4 glass-card-hover group cursor-pointer relative overflow-hidden">
-                    <div
-                        class="absolute -right-4 -top-4 text-gray-100 dark:text-white/5 opacity-50 group-hover:scale-110 transition-transform">
-                        <span class="material-symbols-outlined text-9xl">diversity_1</span>
-                    </div>
-                    <div
-                        class="size-12 rounded-xl bg-orange-50 dark:bg-orange-900/20 text-orange-500 flex items-center justify-center z-10">
-                        <span class="material-symbols-outlined">diversity_1</span>
-                    </div>
-                    <h3 class="text-lg font-bold leading-tight z-10">Community Guidance</h3>
-                    <p
-                        class="text-xs text-gray-500 dark:text-gray-400 z-10 opacity-0 group-hover:opacity-100 transition-opacity absolute bottom-6 left-6 right-6 translate-y-4 group-hover:translate-y-0">
-                        Building strong, faith-based communities.
-                    </p>
-                    <div class="h-6"></div>
-                </div>
-                <!-- Objective 4 -->
-                <div
-                    class="glass-panel p-6 rounded-2xl flex flex-col gap-4 glass-card-hover group cursor-pointer relative overflow-hidden">
-                    <div
-                        class="absolute -right-4 -top-4 text-gray-100 dark:text-white/5 opacity-50 group-hover:scale-110 transition-transform">
-                        <span class="material-symbols-outlined text-9xl">hub</span>
-                    </div>
-                    <div
-                        class="size-12 rounded-xl bg-purple-50 dark:bg-purple-900/20 text-purple-500 flex items-center justify-center z-10">
-                        <span class="material-symbols-outlined">hub</span>
-                    </div>
-                    <h3 class="text-lg font-bold leading-tight z-10">Markaz Network</h3>
-                    <p
-                        class="text-xs text-gray-500 dark:text-gray-400 z-10 opacity-0 group-hover:opacity-100 transition-opacity absolute bottom-6 left-6 right-6 translate-y-4 group-hover:translate-y-0">
-                        Connecting Khanqahs physically &amp; spiritually.
-                    </p>
-                    <div class="h-6"></div>
-                </div>
-                <!-- Objective 5 -->
-                <div
-                    class="glass-panel p-6 rounded-2xl flex flex-col gap-4 glass-card-hover group cursor-pointer relative overflow-hidden">
-                    <div
-                        class="absolute -right-4 -top-4 text-gray-100 dark:text-white/5 opacity-50 group-hover:scale-110 transition-transform">
-                        <span class="material-symbols-outlined text-9xl">podium</span>
-                    </div>
-                    <div class="size-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center z-10">
-                        <span class="material-symbols-outlined">podium</span>
-                    </div>
-                    <h3 class="text-lg font-bold leading-tight z-10">Outreach &amp; Dawah</h3>
-                    <p
-                        class="text-xs text-gray-500 dark:text-gray-400 z-10 opacity-0 group-hover:opacity-100 transition-opacity absolute bottom-6 left-6 right-6 translate-y-4 group-hover:translate-y-0">
-                        Inviting humanity towards the Creator.
-                    </p>
-                    <div class="h-6"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Media Section (Mosaic) -->
-    <section class="py-12 md:py-24 px-4 max-w-7xl mx-auto">
-        <div class="flex flex-col md:flex-row gap-4 md:gap-8 items-start md:items-center justify-between mb-6 md:mb-10">
-            <h2 class="text-2xl md:text-3xl font-bold">Sacred Knowledge</h2>
-            <!-- Search Bar -->
-            <label class="relative flex items-center w-full md:w-96 group">
-                <span
-                    class="absolute left-4 text-gray-400 group-focus-within:text-primary transition-colors material-symbols-outlined">search</span>
-                <input
-                    class="w-full h-12 pl-12 pr-4 rounded-full bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 focus:border-primary focus:ring-0 transition-all shadow-sm font-medium"
-                    placeholder="What are you seeking?" type="text" />
-            </label>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-3 md:gap-4 auto-rows-[150px] md:auto-rows-[200px]">
-            <!-- Main Featured Video (Large) -->
-            <div class="md:col-span-2 md:row-span-2 relative group rounded-2xl overflow-hidden cursor-pointer">
-                <img alt="Close up of a person reading the Quran in warm lighting"
-                    class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoEmt4uz3r0aL3clG2Q32NWfeZUWjCxWQOBIxP4Ir5nZtxa0QVFSJFAseCm9cMGh9y4DEQRkRQV2ABMZtt50V5dN7RgTvi0MP81rZRLXY0WCaeLBOJqr1_AwVMrKj4U8cQE6gBCJr411isn0nFNTU1Hcl79wd2F6DBouEdkIMy4LZQSxU1yiPJAmzEK3eHclXAjFPKzTq2Qr0QXlY8LMX1X6m_fXXhch_bpoQMXIb9uQ2SwUncxh2yghlozBezPeCWjJoYfCaf_J8" />
-                <div
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-4 md:p-6 flex flex-col justify-end">
-                    <div class="inline-flex items-center gap-2 mb-1 md:mb-2">
-                        <span
-                            class="bg-red-600 text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wide">Live
-                            Stream</span>
-                    </div>
-                    <h3 class="text-white text-lg md:text-2xl font-bold mb-0 md:mb-1">Weekly Majlis of Dhikr</h3>
-                    <p class="text-gray-300 text-xs md:text-sm">Join us live every Thursday night.</p>
-                </div>
-                <div
-                    class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/20 backdrop-blur-sm">
-                    <div
-                        class="size-16 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/50">
-                        <span class="material-symbols-outlined text-white text-4xl">play_arrow</span>
-                    </div>
-                </div>
-            </div>
-            <!-- Audio Bayan Card 1 -->
-            <div
-                class="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-2xl p-4 md:p-6 flex flex-col justify-between hover:border-primary/50 transition-colors cursor-pointer group">
-                <div class="flex items-start justify-between gap-2">
-                    <div class="size-8 md:size-10 rounded-full bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
-                        <span class="material-symbols-outlined text-sm md:text-base">graphic_eq</span>
-                    </div>
-                    <span class="text-xs font-mono text-gray-400">14:20</span>
-                </div>
-                <div>
-                    <h4 class="font-bold text-base md:text-lg mb-1 group-hover:text-primary transition-colors">Reality of Dunya</h4>
-                    <p class="text-xs text-gray-500">Hazrat Mufti Mukhtar-ud-Din</p>
-                </div>
-                <!-- Fake Waveform -->
-                <div class="flex items-end gap-[3px] h-8 opacity-50">
-                    <div class="w-1 bg-primary rounded-full"
-                        style="height: 40%; animation: sound 0.8s infinite alternate;"></div>
-                    <div class="w-1 bg-primary rounded-full"
-                        style="height: 80%; animation: sound 0.6s infinite alternate;"></div>
-                    <div class="w-1 bg-primary rounded-full"
-                        style="height: 60%; animation: sound 0.9s infinite alternate;"></div>
-                    <div class="w-1 bg-primary rounded-full"
-                        style="height: 90%; animation: sound 0.5s infinite alternate;"></div>
-                    <div class="w-1 bg-primary rounded-full"
-                        style="height: 50%; animation: sound 0.7s infinite alternate;"></div>
-                </div>
-            </div>
-            <!-- Book Card -->
-            <div
-                class="bg-[#f3f0e8] dark:bg-[#1a1814] rounded-2xl p-6 flex flex-row items-center gap-4 cursor-pointer hover:shadow-lg transition-all relative overflow-hidden">
-                <div class="absolute -right-6 top-10 size-32 bg-secondary/10 rounded-full blur-2xl"></div>
-                <div
-                    class="w-20 h-28 bg-white shadow-md rounded shrink-0 rotate-[-3deg] flex items-center justify-center border-l-4 border-l-secondary overflow-hidden">
-                    <div
-                        class="w-full h-full bg-secondary/20 flex flex-col items-center justify-center p-2 text-center">
-                        <span class="text-[8px] uppercase tracking-widest text-secondary font-bold mb-1">Book</span>
-                        <span class="material-symbols-outlined text-secondary text-2xl">auto_stories</span>
-                    </div>
-                </div>
-                <div class="flex-1 z-10">
-                    <h4 class="font-serif font-bold text-lg leading-tight mb-2">Diseases of the Heart</h4>
-                    <p class="text-xs text-gray-500 mb-3">A guide to spiritual ailments and cures.</p>
-                    <span class="text-xs font-bold text-secondary flex items-center gap-1">Download PDF <span
-                            class="material-symbols-outlined text-xs">download</span></span>
-                </div>
-            </div>
-            <!-- Quote/Hadith Tile -->
-            <div
-                class="md:col-span-1 md:row-span-1 bg-primary rounded-2xl p-6 flex flex-col justify-center items-center text-center text-white relative overflow-hidden">
-                <div
-                    class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/arabesque.png')]">
-                </div>
-                <span class="material-symbols-outlined text-4xl mb-4 opacity-80">format_quote</span>
-                <p class="font-serif italic text-lg leading-snug">"The best of you are those who learn the Quran and
-                    teach it."</p>
-                <span class="text-xs font-bold mt-4 opacity-80">— Al-Bukhari</span>
-            </div>
-            <!-- Audio Bayan Card 2 -->
-            <div
-                class="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-2xl p-6 flex flex-col justify-between hover:border-primary/50 transition-colors cursor-pointer group">
-                <div class="flex items-start justify-between">
-                    <div class="size-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                        <span class="material-symbols-outlined">graphic_eq</span>
-                    </div>
-                    <span class="text-xs font-mono text-gray-400">45:00</span>
-                </div>
-                <div>
-                    <h4 class="font-bold text-lg mb-1 group-hover:text-primary transition-colors">Rights of Parents</h4>
-                    <p class="text-xs text-gray-500">Weekly Thursday Majlis</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Map Section -->
-    <section class="py-12 md:py-20 relative bg-gray-50 dark:bg-black/40 overflow-hidden">
-        <div
-            class="absolute inset-0 opacity-5 bg-[radial-gradient(#0bda84_1px,transparent_1px)] [background-size:16px_16px]">
-        </div>
-        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12 items-center relative z-10">
-            <div class="lg:col-span-1 space-y-4 md:space-y-6">
-                <div class="inline-block p-3 rounded-xl bg-white dark:bg-white/10 shadow-sm mb-2">
-                    <span class="material-symbols-outlined text-2xl md:text-3xl text-primary">location_on</span>
-                </div>
-                <h2 class="text-2xl md:text-4xl font-bold">Find a Markaz Near You</h2>
-                <p class="text-sm md:text-base text-gray-600 dark:text-gray-300">Connect with local gatherings, weekly Dars, and spiritual
-                    retreats in your region.</p>
-                <div
-                    class="bg-white dark:bg-white/5 p-4 rounded-xl shadow-sm border border-gray-100 dark:border-white/5">
-                    <div class="flex items-center gap-3 mb-3">
-                        <div class="size-2 rounded-full bg-green-500 animate-pulse"></div>
-                        <span class="text-xs md:text-sm font-bold">Your Location: Lahore, PK</span>
-                    </div>
-                    <button
-                        class="w-full h-9 md:h-10 rounded-lg bg-primary/10 text-primary font-bold text-xs md:text-sm hover:bg-primary/20 transition-colors flex items-center justify-center gap-2">
-                        <span class="material-symbols-outlined text-lg">my_location</span>
-                        Detect My Region Automatically
-                    </button>
-                </div>
-            </div>
-            <div
-                class="lg:col-span-2 relative h-64 md:h-[400px] bg-white dark:bg-[#15202b] rounded-3xl shadow-glass border border-gray-100 dark:border-white/5 overflow-hidden flex items-center justify-center">
-                <!-- Abstract Map Placeholder -->
-                <div class="relative w-full h-full p-8">
-                    <img alt="Minimalist abstract map representation showing connection nodes across regions"
-                        class="w-full h-full object-cover opacity-20 invert dark:invert-0 grayscale mix-blend-overlay"
-                        data-location="Map of Pakistan"
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuATbxjIHW6sgeGbpksIOKL7E6ojEB6X91BGLyYrCw91CdZMxhUSmiVYel7VTVc1DlvNgkutLHPWOtmSDe562SeehFf_rdTdD9VFnHwSFq9MLiXBDF-eC6GUwK4kzM3hKwWNba32ypZwDG-LKRRwJeHFDuG-d89NzBFlLGyRcMcLULy0fOPKxbHEZ3MhOFWcUimrH-Ks01N9q-yoKHKcH_vRvdGuwoGlHeHWM6e6zZ908CdLqhNLuA6aR-EPRKCqt5-gQ8EsN404vs0" />
-                    <!-- Fake Map Pins -->
-                    <div class="absolute top-1/3 left-1/2 -translate-x-12 size-4 bg-primary rounded-full shadow-[0_0_0_8px_rgba(11,218,132,0.2)] cursor-pointer hover:scale-125 transition-transform group"
-                        title="Islamabad Markaz">
-                        <div
-                            class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1 bg-black text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-                            Islamabad Markaz</div>
-                    </div>
-                    <div class="absolute bottom-1/3 right-1/3 size-3 bg-secondary rounded-full shadow-[0_0_0_4px_rgba(212,175,55,0.2)] cursor-pointer hover:scale-125 transition-transform"
-                        title="Karachi Markaz"></div>
-                    <div class="absolute top-1/4 left-1/3 size-3 bg-secondary rounded-full shadow-[0_0_0_4px_rgba(212,175,55,0.2)] cursor-pointer hover:scale-125 transition-transform"
-                        title="Peshawar Markaz"></div>
-                </div>
-                <!-- Floating Location Card (Visual) -->
-                <div
-                    class="absolute bottom-4 md:bottom-6 left-4 md:left-6 right-4 md:right-6 glass-panel p-3 md:p-4 rounded-xl flex flex-col md:flex-row md:items-center gap-3 md:gap-4 shadow-lg transform translate-y-2 opacity-90">
-                    <div
-                        class="size-10 md:size-12 rounded-lg bg-gray-100 dark:bg-white/10 shrink-0 flex items-center justify-center">
-                        <span class="material-symbols-outlined text-sm md:text-base text-gray-500">mosque</span>
-                    </div>
-                    <div class="flex-1">
-                        <h4 class="font-bold text-xs md:text-sm">Jamia Masjid Taqwa</h4>
-                        <p class="text-xs text-gray-500">Sector F-10, Islamabad • Isha: 8:30 PM</p>
-                    </div>
-                    <button
-                        class="w-full md:w-auto ml-0 md:ml-auto size-9 md:size-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-emerald-600 transition-colors flex-shrink-0">
-                        <span class="material-symbols-outlined text-sm md:text-base">directions</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Fatwa & Questions -->
-    <section class="py-12 md:py-24 px-4 bg-white dark:bg-background-dark">
-        <div class="max-w-3xl mx-auto">
-            <div class="text-center mb-8 md:mb-10">
-                <div
-                    class="inline-flex items-center justify-center p-3 rounded-full bg-blue-50 dark:bg-blue-900/10 text-blue-600 mb-2 md:mb-4">
-                    <span class="material-symbols-outlined text-lg md:text-2xl">question_answer</span>
-                </div>
-                <h2 class="text-2xl md:text-3xl font-bold mb-1 md:mb-2">Ask a Scholar</h2>
-                <p class="text-sm md:text-base text-gray-500">Confidential, verified guidance from certified Muftis.</p>
-            </div>
-            <!-- Chat Input -->
-            <div
-                class="bg-background-light dark:bg-white/5 rounded-2xl p-2 border border-gray-200 dark:border-white/10 shadow-sm flex flex-col md:flex-row md:items-end gap-2 mb-8 md:mb-12 focus-within:ring-2 focus-within:ring-primary/50 transition-shadow">
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
                 <div class="flex items-center gap-2">
-                    <button class="p-2 md:p-3 text-gray-400 hover:text-primary transition-colors flex-shrink-0" title="Attach image/file">
-                        <span class="material-symbols-outlined text-sm md:text-base">attach_file</span>
-                    </button>
-                    <textarea
-                        class="flex-1 bg-transparent border-0 focus:ring-0 p-2 md:p-3 text-xs md:text-base resize-none max-h-32 min-h-[40px] md:min-h-[48px]"
-                        placeholder="Write your question here... (e.g. inheritance, prayer, business)" rows="1"></textarea>
-                </div>
-                <div class="flex items-center gap-2 p-1 flex-shrink-0">
-                    <div class="hidden md:flex items-center gap-1 mr-2 cursor-pointer group" title="Toggle Privacy">
-                        <span class="material-symbols-outlined text-lg text-primary">lock</span>
-                        <span class="text-xs text-gray-400 group-hover:text-primary">Private</span>
+                    <div class="w-10 h-10 bg-pkGreen rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-pkGreen/20">
+                        Í
                     </div>
-                    <button
-                        class="h-9 md:h-10 px-4 md:px-6 bg-primary hover:bg-emerald-600 text-white text-xs md:text-sm font-bold rounded-xl transition-colors flex items-center gap-1 md:gap-2 whitespace-nowrap">
-                        Send <span class="material-symbols-outlined text-sm">send</span>
-                    </button>
+                    <span class="text-xl font-bold tracking-tight text-pkDark">Indus<span class="text-pkGreen">Stream</span></span>
                 </div>
-            </div>
-            <!-- Sample Questions (Accordion visual) -->
-            <div class="space-y-2 md:space-y-3">
-                <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3 md:mb-4 px-2">Recently Answered</p>
-                <div
-                    class="group bg-gray-50 dark:bg-white/5 hover:bg-white hover:dark:bg-white/10 border border-transparent hover:border-gray-200 dark:hover:border-white/10 rounded-xl p-3 md:p-4 cursor-pointer transition-all flex items-center justify-between">
-                    <div class="flex items-center gap-2 md:gap-3">
-                        <span class="material-symbols-outlined text-sm md:text-base text-gray-400">check_circle</span>
-                        <span class="font-medium text-sm md:text-base">Ruling on digital currency trading</span>
-                    </div>
-                    <span
-                        class="material-symbols-outlined text-xs md:text-base text-gray-300 group-hover:text-primary transition-colors">expand_more</span>
+                
+                <div class="hidden md:flex items-center gap-8 font-medium text-gray-600">
+                    <a href="#offerings" class="hover:text-pkGreen transition-colors">Offerings</a>
+                    <a href="#analytics" class="hover:text-pkGreen transition-colors">Analytics</a>
+                    <a href="#projects" class="hover:text-pkGreen transition-colors">Case Studies</a>
+                    <a href="#pricing" class="hover:text-pkGreen transition-colors">Pricing</a>
+                    <a href="#integrations" class="hover:text-pkGreen transition-colors">Integrations</a>
                 </div>
-                <div
-                    class="group bg-gray-50 dark:bg-white/5 hover:bg-white hover:dark:bg-white/10 border border-transparent hover:border-gray-200 dark:hover:border-white/10 rounded-xl p-3 md:p-4 cursor-pointer transition-all flex items-center justify-between">
-                    <div class="flex items-center gap-2 md:gap-3">
-                        <span class="material-symbols-outlined text-sm md:text-base text-gray-400">check_circle</span>
-                        <span class="font-medium text-sm md:text-base">Missed prayers calculation method</span>
-                    </div>
-                    <span
-                        class="material-symbols-outlined text-xs md:text-base text-gray-300 group-hover:text-primary transition-colors">expand_more</span>
+
+                <div class="hidden md:flex items-center gap-4">
+                    <a href="#" class="text-gray-700 hover:text-pkGreen font-medium transition-colors">Login</a>
+                    <a href="#contact" class="bg-pkGreen hover:bg-emerald-800 text-white px-5 py-2.5 rounded-xl font-medium transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5">Book a Demo</a>
                 </div>
+
+                <button id="mobile-menu-btn" class="md:hidden text-gray-700 focus:outline-none">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </</button>
             </div>
         </div>
-    </section>
-    <!-- Join Action -->
-    <section
-        class="py-24 px-4 bg-background-light dark:bg-background-dark text-center border-t border-gray-200 dark:border-white/5">
-        <h2 class="text-3xl font-bold mb-10">Be Part of the Effort</h2>
-        <div class="flex flex-wrap justify-center gap-4">
-            <button
-                class="h-14 px-8 rounded-lg bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 hover:border-primary hover:text-primary font-bold transition-all shadow-sm flex items-center gap-2">
-                <span class="material-symbols-outlined">handshake</span>
-                Become a Volunteer
-            </button>
-            <button
-                class="h-14 px-8 rounded-lg bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 hover:border-primary hover:text-primary font-bold transition-all shadow-sm flex items-center gap-2">
-                <span class="material-symbols-outlined">school</span>
-                Join a Dars
-            </button>
-            <button
-                class="h-14 px-8 rounded-lg bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 hover:border-primary hover:text-primary font-bold transition-all shadow-sm flex items-center gap-2">
-                <span class="material-symbols-outlined">mail</span>
-                Invite for a Bayaan
-            </button>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-200 px-4 pt-2 pb-6 space-y-3 absolute w-full left-0 shadow-xl transition-all duration-300">
+            <a href="#offerings" class="block py-2 text-gray-700 font-medium">Offerings</a>
+            <a href="#analytics" class="block py-2 text-gray-700 font-medium">Analytics</a>
+            <a href="#projects" class="block py-2 text-gray-700 font-medium">Case Studies</a>
+            <a href="#pricing" class="block py-2 text-gray-700 font-medium">Pricing</a>
+            <a href="#integrations" class="block py-2 text-gray-700 font-medium">Integrations</a>
+            <div class="pt-4 border-t border-gray-100 flex flex-col gap-3">
+                <a href="#" class="text-center py-2 text-gray-700 font-medium">Login</a>
+                <a href="#contact" class="text-center bg-pkGreen text-white py-2.5 rounded-xl font-medium">Book a Demo</a>
+            </div>
         </div>
-    </section>
-    <!-- Footer -->
-    <footer class="bg-gray-100 dark:bg-[#0c1a14] pt-16 pb-8 border-t border-gray-200 dark:border-white/5">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-                <!-- Brand & Widget -->
-                <div class="col-span-1 md:col-span-1 space-y-6">
-                    <h3 class="text-xl font-bold">Dar ul Eman</h3>
-                    <p class="text-sm text-gray-500 leading-relaxed">Striving for the revival of faith and purification
-                        of the self in the light of Quran and Sunnah.</p>
-                    <!-- Hijri Widget -->
-                    <div
-                        class="bg-white dark:bg-white/5 rounded-lg p-4 border border-gray-200 dark:border-white/10 inline-block min-w-[200px]">
-                        <div class="text-xs font-bold text-gray-400 uppercase mb-1">Today</div>
-                        <div class="font-serif text-lg font-bold text-primary">14 Rajab, 1445</div>
-                        <div class="text-sm text-gray-500">25 January, 2024</div>
-                        <div
-                            class="mt-3 pt-3 border-t border-gray-100 dark:border-white/5 flex justify-between text-xs font-medium">
-                            <span>Asr: 3:45 PM</span>
-                            <span>Maghrib: 5:30 PM</span>
+    </nav>
+
+    <section class="pt-32 pb-20 md:pt-44 md:pb-32 bg-gradient-to-b from-emerald-50/50 via-white to-pkLight relative overflow-hidden">
+        <div class="absolute inset-0 opacity-30 pointer-events-none">
+            <div class="absolute top-20 left-10 w-72 h-72 bg-emerald-300 rounded-full filter blur-3xl animate-pulse"></div>
+            <div class="absolute bottom-10 right-10 w-96 h-96 bg-green-200 rounded-full filter blur-3xl"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 bg-emerald-100/60 border border-emerald-200/80 px-3 py-1.5 rounded-full text-xs md:text-sm font-semibold text-pkGreen mb-6">
+                        <span class="flex h-2 w-2 rounded-full bg-emerald-500 animate-ping"></span>
+                        Pakistan's First Localized Enterprise SaaS Platform
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-pkDark leading-tight mb-6">
+                        Automate Your Business. Built for <span class="gradient-text">Pakistan's Ecosystem.</span>
+                    </h1>
+                    <p class="text-lg text-gray-600 max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed">
+                        Streamline localized payroll (FBR compliant), track inventory, manage standard accounting, and seamlessly process payments via 1-Link, Easypaisa, and JazzCash.
+                    </p>
+                    <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
+                        <a href="#contact" class="bg-pkGreen hover:bg-emerald-800 text-white text-center px-8 py-4 rounded-xl font-bold shadow-lg shadow-pkGreen/20 transition-all transform hover:-translate-y-0.5">
+                            Start Free Trial (14 Days)
+                        </a>
+                        <a href="#analytics" class="bg-white hover:bg-gray-50 text-gray-800 text-center px-8 py-4 rounded-xl font-bold border border-gray-200 shadow-sm transition-all flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-play text-xs text-pkGreen"></i> Watch System Demo
+                        </a>
+                    </div>
+                    
+                    <div class="mt-12 pt-8 border-t border-gray-200/60 grid grid-cols-3 gap-4 max-w-md mx-auto lg:mx-0 text-center lg:text-left">
+                        <div>
+                            <p class="text-2xl md:text-3xl font-bold text-pkDark">100%</p>
+                            <p class="text-xs md:text-sm text-gray-500">FBR & SECP Compliant</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl md:text-3xl font-bold text-pkDark">Rs. 2.4B+</p>
+                            <p class="text-xs md:text-sm text-gray-500">Processed Safely</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl md:text-3xl font-bold text-pkDark"><span class="text-pkGreen">45ms</span></p>
+                            <p class="text-xs md:text-sm text-gray-500">Local Edge Latency</p>
                         </div>
                     </div>
                 </div>
-                <!-- Links -->
-                <div>
-                    <h4 class="font-bold mb-4">Organization</h4>
-                    <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
-                        <li><a class="hover:text-primary" href="#">About Us</a></li>
-                        <li><a class="hover:text-primary" href="#">Our Objectives</a></li>
-                        <li><a class="hover:text-primary" href="#">Leadership</a></li>
-                        <li><a class="hover:text-primary" href="#">Policies</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold mb-4">Resources</h4>
-                    <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
-                        <li><a class="hover:text-primary" href="#">Audio Bayanaat</a></li>
-                        <li><a class="hover:text-primary" href="#">Books &amp; PDFs</a></li>
-                        <li><a class="hover:text-primary" href="#">Fatwa Center</a></li>
-                        <li><a class="hover:text-primary" href="#">Daily Adhkar</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold mb-4">Contact</h4>
-                    <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
-                        <li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">mail</span>
-                            info@daruleman.org</li>
-                        <li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">call</span>
-                            +92 300 1234567</li>
-                        <li class="flex gap-4 mt-4">
-                            <a class="opacity-60 hover:opacity-100" href="#"><img class="h-5 w-5 dark:invert"
-                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuYCb9ENinNeliXyeLgAVfnHVIda2SuYWvPo5VQ2SLm19ZNqmODh4QOPGxTIdNlX6xy_ntoIPo-JFG_Q2BbCq-8mWnyIj6R1L2-GH8CCj3QrjmU-prnfHNM4OhA7VxKEFbDZ1sSskMeywiVl6537ziXbymNAZlY6Mi4xbuNpKt8kEMw_H53qA9Y0sshjVpFOvRW9cAj9O_tdhkI5jj7PD0k3nIktGRc8pZRMubniFzPdXrVuVaT5Yednkcbhm5P4eHOwEOCYOESqA" /></a>
-                            <a class="opacity-60 hover:opacity-100" href="#"><img class="h-5 w-5 dark:invert"
-                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZBAg867WOfOEgribgfgtrgu5Vfz_MOrBwsfSAEM_VKYqriMESPaGLpDBn88CUP2ld3HrMewwBsw24cQqO2eTl0mcgrFqmpd-nl8HgTUhq13WggCxYUMsXU9W1P7AJEmM4PFRW0DWQYZa1XkmRrS5CBjrppdSgzwR1BrByiLW5JYlaiU8G_vNx_DdI50YdEaydVL0IUumyOdwQUSt4e1IhV3UmdryDdTckN35HnAgyrYGMXEcZZft93gWuCuRGCJI2kh9ZNhfKEtg" /></a>
-                            <a class="opacity-60 hover:opacity-100" href="#"><img class="h-5 w-5 dark:invert"
-                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvW5FA4CqQG4MBS_YFlKrJxxeWYJmA3_zh6Ep-GcH9czTjTjJCmCv8MR9pEQtau5QiQE26kvmVZpFADrHxNN1uRk39wC0aNPPCPEVMKs4j9FRWa1erUTq8OMQ_7BvJ0U664Ef829e6W5F7yNB0T4HsdtWL4BIevONqd4ZVbVHqKEbwKnhjfl9RPkxrxmfxC4uMSCBp6k1e09vrdjS41M6mmosVzlnGNHH43nABJlSO4MENW98tF3t9MW45iiPWQ-Eb2Aaqgn5exOg" /></a>
-                        </li>
-                    </ul>
+
+                <div class="lg:col-span-5 bg-white p-6 rounded-2xl shadow-2xl border border-gray-100 relative">
+                    <div class="flex justify-between items-center mb-6">
+                        <div>
+                            <p class="text-xs text-gray-400 font-medium">Monthly Active Revenue</p>
+                            <h3 class="text-2xl font-bold text-pkDark">PKR 4,820,500</h3>
+                        </div>
+                        <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-1 rounded-full">+18.4% MoM</span>
+                    </div>
+                    <div class="h-64">
+                        <canvas id="heroChart"></canvas>
+                    </div>
                 </div>
             </div>
-            <div
-                class="border-t border-gray-200 dark:border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500">
-                <p>© 2024 Dar ul Eman wa al-Taqwa. All rights reserved.</p>
-                <div class="flex gap-6">
-                    <a class="hover:text-primary" href="#">Privacy Policy</a>
-                    <a class="hover:text-primary" href="#">Terms of Service</a>
+        </div>
+    </section>
+
+    <section id="offerings" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-base font-bold text-pkGreen tracking-wider uppercase mb-2">Platform Offerings</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold text-pkDark tracking-tight">Everything your scaling business needs to win locally</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="p-8 rounded-2xl bg-pkLight border border-gray-100 hover:border-pkGreen/20 transition-all hover:shadow-xl group">
+                    <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-pkGreen shadow-md mb-6 group-hover:bg-pkGreen group-hover:text-white transition-all">
+                        <i class="fa-solid fa-calculator text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-pkDark mb-3">Smart Automated Tax Filing</h3>
+                    <p class="text-gray-600 leading-relaxed text-sm">Automated sales tax (PRAL, SRB, PRA) calculations and direct integration for frictionless e-filing directly from ledger pipelines.</p>
                 </div>
+                <div class="p-8 rounded-2xl bg-pkLight border border-gray-100 hover:border-pkGreen/20 transition-all hover:shadow-xl group">
+                    <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-pkGreen shadow-md mb-6 group-hover:bg-pkGreen group-hover:text-white transition-all">
+                        <i class="fa-solid fa-money-bill-transfer text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-pkDark mb-3">Local Gateway Middleware</h3>
+                    <p class="text-gray-600 leading-relaxed text-sm">Unified infrastructure connecting checkout directly to Alfa, JazzCash, Easypaisa, and standard 1-Link bank accounts out of the box.</p>
+                </div>
+                <div class="p-8 rounded-2xl bg-pkLight border border-gray-100 hover:border-pkGreen/20 transition-all hover:shadow-xl group">
+                    <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-pkGreen shadow-md mb-6 group-hover:bg-pkGreen group-hover:text-white transition-all">
+                        <i class="fa-solid fa-warehouse text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-pkDark mb-3">Multi-Warehouse B2B Inventory</h3>
+                    <p class="text-gray-600 leading-relaxed text-sm">Real-time localized inventory trackers built to seamlessly match wholesale business setups across Karachi, Lahore, and Islamabad markets.</p>
+                </div>
+                <div class="p-8 rounded-2xl bg-pkLight border border-gray-100 hover:border-pkGreen/20 transition-all hover:shadow-xl group">
+                    <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-pkGreen shadow-md mb-6 group-hover:bg-pkGreen group-hover:text-white transition-all">
+                        <i class="fa-solid fa-users text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-pkDark mb-3">Localized HR & Payroll</h3>
+                    <p class="text-gray-600 leading-relaxed text-sm">Handle complex local allowances, casual leaves, and provident fund logic matching standard Pakistani labor standards.</p>
+                </div>
+                <div class="p-8 rounded-2xl bg-pkLight border border-gray-100 hover:border-pkGreen/20 transition-all hover:shadow-xl group">
+                    <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-pkGreen shadow-md mb-6 group-hover:bg-pkGreen group-hover:text-white transition-all">
+                        <i class="fa-solid fa-bolt text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-pkDark mb-3">Offline-First Retail POS</h3>
+                    <p class="text-gray-600 leading-relaxed text-sm">Internet load-shedding? No worries. Our robust offline storage syncs data reliably back online once power stabilizes.</p>
+                </div>
+                <div class="p-8 rounded-2xl bg-pkLight border border-gray-100 hover:border-pkGreen/20 transition-all hover:shadow-xl group">
+                    <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-pkGreen shadow-md mb-6 group-hover:bg-pkGreen group-hover:text-white transition-all">
+                        <i class="fa-solid fa-chart-pie text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-pkDark mb-3">AI Urdu Analytics Voicebot</h3>
+                    <p class="text-gray-600 leading-relaxed text-sm">Query your sales metric reporting in real time using Urdu voice commands. Built natively for busy executives on WhatsApp.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="analytics" class="py-24 bg-pkDark text-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-5">
+                    <h2 class="text-base font-bold text-emerald-400 tracking-wider uppercase mb-2">Live Enterprise Telemetry</h2>
+                    <h3 class="text-3xl sm:text-4xl font-extrabold mb-6 tracking-tight">Decide faster with deep granular data pipelines</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">
+                        Stop guessing your overhead matrices. Track immediate net performance metrics across regional franchise branches instantly via one master dashboard view.
+                    </p>
+                    <ul class="space-y-4 text-sm text-gray-300">
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-emerald-400"></i> Auto generated weekly P&L statements</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-emerald-400"></i> Cash-flow forecast modeling matrices</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-emerald-400"></i> Low supply warning alerts directly via WhatsApp</li>
+                    </ul>
+                </div>
+                <div class="lg:col-span-7 bg-slate-900/60 p-6 rounded-2xl border border-slate-800 shadow-2xl">
+                    <div class="flex flex-wrap justify-between items-center mb-6 gap-4">
+                        <div class="flex gap-2">
+                            <span class="w-3 h-3 rounded-full bg-red-500"></span>
+                            <span class="w-3 h-3 rounded-full bg-yellow-500"></span>
+                            <span class="w-3 h-3 rounded-full bg-green-500"></span>
+                        </div>
+                        <div class="bg-slate-800 text-xs px-3 py-1.5 rounded-lg text-gray-300">Region: All Pakistan (KHI, LHE, ISB)</div>
+                    </div>
+                    <div class="h-72">
+                        <canvas id="analyticsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-base font-bold text-pkGreen tracking-wider uppercase mb-2">Case Studies</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold text-pkDark tracking-tight">Empowering growth across major industries</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-pkLight rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all">
+                    <div class="p-8">
+                        <span class="bg-emerald-100 text-pkGreen text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">E-Commerce & Retail</span>
+                        <h3 class="text-2xl font-bold text-pkDark mt-4 mb-2">Zeenat Fabrics Supply Chain Shift</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">Optimized distribution across 14 nationwide branch outlets, syncing core warehouse logistics while bringing inventory error loss rates down below 0.3% entirely.</p>
+                        <div class="flex items-center gap-6 border-t border-gray-200/60 pt-6">
+                            <div>
+                                <h4 class="text-xl font-bold text-pkGreen">4.2x</h4>
+                                <p class="text-xs text-gray-500">Inventory Velocity Speed</p>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-pkGreen">Rs 12M+</h4>
+                                <p class="text-xs text-gray-500">Saved in Leakages Annually</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-pkLight rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all">
+                    <div class="p-8">
+                        <span class="bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Logistics & Tech</span>
+                        <h3 class="text-2xl font-bold text-pkDark mt-4 mb-2">Ravi Freight Forwarding Ledger Sync</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">Transitioned manual booking sheets into modern cloud databases tracking operational accounting timelines for a fleet of over 200 transit vehicles.</p>
+                        <div class="flex items-center gap-6 border-t border-gray-200/60 pt-6">
+                            <div>
+                                <h4 class="text-xl font-bold text-pkGreen">99.9%</h4>
+                                <p class="text-xs text-gray-500">Uptime Over Cellular Networks</p>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-pkGreen">1,400 hrs</h4>
+                                <p class="text-xs text-gray-500">Admin Hours Saved Yearly</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="integrations" class="py-16 bg-pkLight/60 border-y border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-sm font-semibold text-gray-500 uppercase tracking-widest mb-8">Natively integrated with ecosystem infrastructure</p>
+            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-70 grayscale hover:grayscale-0 transition-all">
+                <span class="text-xl font-bold tracking-wider text-slate-700"><i class="fa-solid fa-building-columns text-pkGreen mr-2"></i> 1-LINK</span>
+                <span class="text-xl font-bold tracking-wider text-slate-700"><i class="fa-solid fa-wallet text-emerald-600 mr-2"></i> EASYPAISA</span>
+                <span class="text-xl font-bold tracking-wider text-slate-700"><i class="fa-solid fa-money-bill-wave text-red-600 mr-2"></i> JAZZCASH</span>
+                <span class="text-xl font-bold tracking-wider text-slate-700"><i class="fa-solid fa-shield-halved text-blue-800 mr-2"></i> FBR (PRAL)</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-base font-bold text-pkGreen tracking-wider uppercase mb-2">Pricing Models</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold text-pkDark tracking-tight">Fair pricing tier choices scale-built for your scope</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 items-stretch">
+                <div class="border border-gray-200 rounded-2xl p-8 flex flex-col justify-between bg-white hover:border-pkGreen transition-all">
+                    <div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Startup Tier</h3>
+                        <p class="text-gray-500 text-sm mb-6">Perfect for new retail setups & micro businesses.</p>
+                        <div class="mb-6">
+                            <span class="text-4xl font-extrabold text-pkDark">PKR 8,500</span>
+                            <span class="text-gray-500 text-sm">/ month</span>
+                        </div>
+                        <ul class="space-y-4 text-sm text-gray-600 mb-8">
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-pkGreen"></i> Up to 3 user seats</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-pkGreen"></i> Single store inventory tracker</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-pkGreen"></i> Core bookkeeping ledgers</li>
+                            <li class="flex items-center gap-3 text-gray-400 line-through"><i class="fa-solid fa-xmark"></i> Dedicated FBR custom e-filing</li>
+                        </ul>
+                    </div>
+                    <a href="#contact" class="w-full text-center border border-pkGreen text-pkGreen font-bold py-3 rounded-xl hover:bg-pkGreen hover:text-white transition-all">Get Started</a>
+                </div>
+
+                <div class="border-2 border-pkGreen rounded-2xl p-8 flex flex-col justify-between bg-pkDark text-white relative shadow-xl transform scale-105">
+                    <span class="absolute top-0 right-6 transform -translate-y-1/2 bg-pkGreen text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Most Popular</span>
+                    <div>
+                        <h3 class="text-lg font-bold mb-2">Business Scale</h3>
+                        <p class="text-gray-400 text-sm mb-6">Designed for expanding franchises & mid-tier businesses.</p>
+                        <div class="mb-6">
+                            <span class="text-4xl font-extrabold text-white">PKR 22,000</span>
+                            <span class="text-gray-400 text-sm">/ month</span>
+                        </div>
+                        <ul class="space-y-4 text-sm text-slate-300 mb-8">
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Up to 15 user seats</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Multi-warehouse tracker tracking</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Direct FBR integration engine</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> WhatsApp alert engine bots</li>
+                        </ul>
+                    </div>
+                    <a href="#contact" class="w-full text-center bg-pkGreen text-white font-bold py-3 rounded-xl hover:bg-emerald-700 transition-all shadow-lg shadow-pkGreen/30">Claim 14-Day Free Trial</a>
+                </div>
+
+                <div class="border border-gray-200 rounded-2xl p-8 flex flex-col justify-between bg-white hover:border-pkGreen transition-all">
+                    <div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Enterprise</h3>
+                        <p class="text-gray-500 text-sm mb-6">For multi-city setups requiring custom integrations.</p>
+                        <div class="mb-6">
+                            <span class="text-4xl font-extrabold text-pkDark">Custom</span>
+                        </div>
+                        <ul class="space-y-4 text-sm text-gray-600 mb-8">
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-pkGreen"></i> Unlimited users & nodes</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-pkGreen"></i> Dedicated database clustering on-prem</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-pkGreen"></i> 24/7 dedicated support team access</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-pkGreen"></i> Customized SLA agreements</li>
+                        </ul>
+                    </div>
+                    <a href="#contact" class="w-full text-center border border-gray-800 text-pkDark font-bold py-3 rounded-xl hover:bg-pkDark hover:text-white transition-all">Contact Sales</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 bg-pkLight/80 border-t border-gray-200">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white p-8 md:p-12 rounded-2xl shadow-xl border border-gray-100">
+                <div class="text-center mb-8">
+                    <h3 class="text-3xl font-extrabold text-pkDark">Request an Enterprise Demo</h3>
+                    <p class="text-gray-500 mt-2 text-sm">Our local cloud solutions team will contact you back within 2 business hours.</p>
+                </div>
+                <form class="space-y-6" onsubmit="event.preventDefault(); alert('Demo request submitted successfully! Our representative will call you shortly.');">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Your Name</label>
+                            <input type="text" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-pkGreen/40 transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Company Name</label>
+                            <input type="text" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-pkGreen/40 transition-all">
+                        </div>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Business Email</label>
+                            <input type="email" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-pkGreen/40 transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Phone Number</label>
+                            <input type="tel" placeholder="e.g. +92 300 1234567" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-pkGreen/40 transition-all">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">Expected System Users Size</label>
+                        <select class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-pkGreen/40 transition-all bg-white">
+                            <option>1 - 10 Employees</option>
+                            <option>11 - 50 Employees</option>
+                            <option>51 - 200 Employees</option>
+                            <option>200+ Enterprise Operations</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="w-full bg-pkGreen hover:bg-emerald-800 text-white font-bold py-4 rounded-xl shadow-lg shadow-pkGreen/20 transition-all transform hover:-translate-y-0.5">
+                        Schedule Consultation Call
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-pkDark text-gray-400 pt-16 pb-8 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
+            <div class="col-span-2">
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="w-8 h-8 bg-pkGreen rounded-lg flex items-center justify-center text-white font-bold text-sm">Í</div>
+                    <span class="text-lg font-bold tracking-tight text-white">Indus<span class="text-pkGreen">Stream</span></span>
+                </div>
+                <p class="text-sm text-gray-400 max-w-sm leading-relaxed mb-4">
+                    Next-generation enterprise orchestration architecture engine engineered specifically to empower business models within Pakistan.
+                </p>
+                <div class="flex gap-4 text-lg">
+                    <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-github"></i></a>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-white text-sm font-bold tracking-wider uppercase mb-4">Product</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#offerings" class="hover:text-white transition-colors">Core Features</a></li>
+                    <li><a href="#analytics" class="hover:text-white transition-colors">Live Analytics</a></li>
+                    <li><a href="#pricing" class="hover:text-white transition-colors">Pricing Options</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white text-sm font-bold tracking-wider uppercase mb-4">Compliance</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-white transition-colors">FBR Tax Pipeline</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Data Privacy Rules</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">SECP Standards</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white text-sm font-bold tracking-wider uppercase mb-4">Contact Info</h4>
+                <p class="text-sm leading-relaxed text-gray-400">
+                    Level 4, dynamic tech hub sector,<br>
+                    H-8, Islamabad, Pakistan<br>
+                    <span class="text-white block mt-2">support@indusstream.pk</span>
+                </p>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-slate-800/60 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs">
+            <p>&copy; 2026 IndusStream Solutions Pvt Ltd. All rights reserved.</p>
+            <div class="flex gap-6">
+                <a href="#" class="hover:text-white transition-colors">Privacy Charter</a>
+                <a href="#" class="hover:text-white transition-colors">Terms of Infrastructure Usage</a>
             </div>
         </div>
     </footer>
-    <!-- Floating Audio Ambience Toggle (Bottom Right) -->
-    <div class="fixed bottom-6 right-6 z-50">
-        <button
-            class="size-12 rounded-full bg-white dark:bg-black/80 border border-gray-200 dark:border-white/10 shadow-lg flex items-center justify-center text-gray-400 hover:text-primary transition-colors"
-            title="Toggle Ambience">
-            <span class="material-symbols-outlined">volume_off</span>
-        </button>
-    </div>
+
     <script>
-        // Mobile Menu Toggle
+        // Toggle mobile nav menu drawer logic
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
-        const menuIcon = document.getElementById('menu-icon');
-        let mobileMenuOpen = false;
 
         mobileMenuBtn.addEventListener('click', () => {
-            mobileMenuOpen = !mobileMenuOpen;
-            if (mobileMenuOpen) {
-                mobileMenu.classList.remove('hidden');
-                menuIcon.textContent = 'close';
-            } else {
-                mobileMenu.classList.add('hidden');
-                menuIcon.textContent = 'menu';
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close menu instantly upon option tap clicks
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+
+        // Chart 1: Hero Dashboard Analytics View
+        const ctxHero = document.getElementById('heroChart').getContext('2d');
+        new Chart(ctxHero, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                datasets: [{
+                    label: 'Gross Volume (Millions PKR)',
+                    data: [1.2, 1.9, 2.4, 3.1, 4.0, 4.8],
+                    borderColor: '#006643',
+                    backgroundColor: 'rgba(0, 102, 67, 0.05)',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: { y: { grid: { display: false } }, x: { grid: { display: false } } }
             }
         });
 
-        // Close menu on link click
-        const menuLinks = mobileMenu.querySelectorAll('a');
-        menuLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenuOpen = false;
-                mobileMenu.classList.add('hidden');
-                menuIcon.textContent = 'menu';
-            });
-        });
-
-        // Close menu on scroll
-        window.addEventListener('scroll', () => {
-            if (mobileMenuOpen) {
-                mobileMenuOpen = false;
-                mobileMenu.classList.add('hidden');
-                menuIcon.textContent = 'menu';
+        // Chart 2: Telemetry Analytics Dashboard View
+        const ctxAnalytics = document.getElementById('analyticsChart').getContext('2d');
+        new Chart(ctxAnalytics, {
+            type: 'bar',
+            data: {
+                labels: ['Karachi Hub', 'Lahore Hub', 'Islamabad HQ', 'Faisalabad Node'],
+                datasets: [
+                    {
+                        label: 'Processed Orders',
+                        data: [14200, 9800, 7400, 4100],
+                        backgroundColor: '#10B981',
+                        borderRadius: 8
+                    },
+                    {
+                        label: 'Pending Invoices',
+                        data: [2100, 1400, 900, 600],
+                        backgroundColor: '#334155',
+                        borderRadius: 8
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { labels: { color: '#94A3B8' } } },
+                scales: {
+                    y: { grid: { color: '#1E293B' }, ticks: { color: '#94A3B8' } },
+                    x: { grid: { display: false }, ticks: { color: '#94A3B8' } }
+                }
             }
-        }, { passive: true });
-
-        // Close menu on outside click
-        document.addEventListener('click', (e) => {
-            if (mobileMenuOpen && !mobileMenuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
-                mobileMenuOpen = false;
-                mobileMenu.classList.add('hidden');
-                menuIcon.textContent = 'menu';
-            }
         });
-    </script></body>
-
+    </script>
+</body>
 </html>
